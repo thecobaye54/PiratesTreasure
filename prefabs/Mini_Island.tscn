@@ -1,0 +1,187 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://images/Ile.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Mini_Island.gd" type="Script" id=2]
+[ext_resource path="res://images/coffre_closed.png" type="Texture" id=3]
+[ext_resource path="res://images/coffre_open.png" type="Texture" id=4]
+[ext_resource path="res://images/coin/coin1.png" type="Texture" id=5]
+[ext_resource path="res://fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://images/boulet_canon.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "open",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "closed",
+"speed": 1.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 15.5
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "coin_reveal"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoinAnim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CoinAnim:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanonAnim:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanonAnim:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CoinAnim:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanonAnim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 44
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[node name="Island" type="Sprite"]
+texture = ExtResource( 1 )
+region_rect = Rect2( 73.4957, 50.8005, 112.935, 42.1481 )
+script = ExtResource( 2 )
+CoinLabel_path = NodePath("CoinAnim/Label")
+CanonLabel_path = NodePath("CanonAnim/Label")
+
+[node name="InteractTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Coffre" type="AnimatedSprite" parent="."]
+position = Vector2( 0.749155, -2.38793 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )
+animation = "closed"
+
+[node name="Island" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Island"]
+position = Vector2( 1, -0.5 )
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1, -0.5 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/coin_reveal = SubResource( 4 )
+
+[node name="CoinAnim" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="CoinAnim"]
+position = Vector2( -3, 0 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="CoinAnim"]
+margin_left = 2.0
+margin_top = -5.0
+margin_right = 44.0
+margin_bottom = 47.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 5 )
+text = "8"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanonAnim" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -10 )
+
+[node name="Sprite" type="Sprite" parent="CanonAnim"]
+position = Vector2( -3, 0 )
+scale = Vector2( 0.28, 0.28 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="CanonAnim"]
+margin_left = 2.0
+margin_top = -5.0
+margin_right = 44.0
+margin_bottom = 47.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 5 )
+text = "8"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="InteractTimer" to="." method="_on_InteractTimer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

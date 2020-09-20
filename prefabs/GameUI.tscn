@@ -1,0 +1,372 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://images/coin/coin1.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/boulet_canon.png" type="Texture" id=3]
+[ext_resource path="res://scripts/GameUI.gd" type="Script" id=4]
+[ext_resource path="res://images/wind_arrow.png" type="Texture" id=5]
+[ext_resource path="res://prefabs/GameHint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://images/Coeur.png" type="Texture" id=7]
+[ext_resource path="res://images/no_sail.png" type="Texture" id=8]
+[ext_resource path="res://images/main_sail.png" type="Texture" id=9]
+[ext_resource path="res://images/little_sail.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="GameUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+Boulets_L = NodePath("ShipUI/ShipUI/BouletsL")
+Boulets_R = NodePath("ShipUI/ShipUI/BouletsR")
+GameHint_path = NodePath("GameHint")
+GoldsLabel_path = NodePath("IndicatorUI/IndicatorUI/GoldLabel")
+CanonLabel_path = NodePath("IndicatorUI/IndicatorUI/CanonLabel")
+HealthLabel_path = NodePath("IndicatorUI/IndicatorUI/HealthLabel")
+GameOverPanel_path = NodePath("GameOver")
+sail_state = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 9 ) ]
+SailIndicator_path = NodePath("ShipUI/ShipUI/SailIndicator")
+
+[node name="IndicatorUI" type="Control" parent="."]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IndicatorUI" type="HBoxContainer" parent="IndicatorUI"]
+margin_right = 160.0
+margin_bottom = 60.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoldTex" type="TextureRect" parent="IndicatorUI/IndicatorUI"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoldLabel" type="Label" parent="IndicatorUI/IndicatorUI"]
+margin_left = 80.0
+margin_right = 140.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanonTex" type="TextureRect" parent="IndicatorUI/IndicatorUI"]
+margin_left = 160.0
+margin_right = 220.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="CanonLabel" type="Label" parent="IndicatorUI/IndicatorUI"]
+margin_left = 240.0
+margin_right = 300.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+custom_fonts/font = SubResource( 4 )
+text = "27"
+valign = 1
+
+[node name="HealthText" type="TextureRect" parent="IndicatorUI/IndicatorUI"]
+margin_left = 320.0
+margin_right = 380.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="HealthLabel" type="Label" parent="IndicatorUI/IndicatorUI"]
+margin_left = 400.0
+margin_right = 460.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+custom_fonts/font = SubResource( 4 )
+text = "3"
+valign = 1
+
+[node name="ShipUI" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+margin_right = -30.0
+margin_bottom = -30.0
+
+[node name="ShipUI" type="HBoxContainer" parent="ShipUI"]
+margin_left = -80.0787
+margin_top = -30.0787
+margin_right = -0.0787354
+margin_bottom = -0.0787354
+grow_horizontal = 0
+grow_vertical = 0
+custom_constants/separation = 20
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SailIndicator" type="TextureRect" parent="ShipUI/ShipUI"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="BouletsL" type="TextureRect" parent="ShipUI/ShipUI"]
+margin_left = 120.0
+margin_right = 220.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="TextureProgress" type="TextureProgress" parent="ShipUI/ShipUI/BouletsL"]
+margin_right = 100.0
+margin_bottom = 100.0
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+tint_under = Color( 0, 0, 0, 0.588235 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ShipUI/ShipUI/BouletsL"]
+margin_left = 73.7223
+margin_top = 56.0211
+margin_right = 98.7223
+margin_bottom = 104.021
+custom_fonts/font = SubResource( 3 )
+text = "L"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BouletsR" type="TextureRect" parent="ShipUI/ShipUI"]
+margin_left = 240.0
+margin_right = 340.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="TextureProgress" type="TextureProgress" parent="ShipUI/ShipUI/BouletsR"]
+margin_top = 0.125
+margin_right = 100.0
+margin_bottom = 100.125
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+tint_under = Color( 0, 0, 0, 0.588235 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ShipUI/ShipUI/BouletsR"]
+margin_left = 74.3153
+margin_top = 57.6282
+margin_right = 99.3153
+margin_bottom = 105.628
+custom_fonts/font = SubResource( 3 )
+text = "R"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindArrow" type="TextureRect" parent="."]
+anchor_left = 0.824
+anchor_top = 0.613
+anchor_right = 0.94
+anchor_bottom = 0.757
+margin_left = 39.3456
+margin_top = 14.3055
+margin_right = -34.1344
+margin_bottom = -14.3745
+rect_min_size = Vector2( 80, 80 )
+rect_pivot_offset = Vector2( 40, 40 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameHint" parent="." instance=ExtResource( 6 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -170.819
+margin_top = -253.571
+margin_right = 159.181
+margin_bottom = -153.571
+rect_scale = Vector2( 0.8, 0.8 )
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -271.5
+margin_right = 271.5
+margin_bottom = 118.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sep" type="Control" parent="GameOver/VBoxContainer"]
+margin_right = 543.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Titre" type="Label" parent="GameOver/VBoxContainer"]
+margin_top = 104.0
+margin_right = 543.0
+margin_bottom = 222.0
+custom_fonts/font = SubResource( 9 )
+text = "Game Over !"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sep2" type="Control" parent="GameOver/VBoxContainer"]
+margin_top = 226.0
+margin_right = 543.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Message" type="Label" parent="GameOver/VBoxContainer"]
+margin_top = 260.0
+margin_right = 543.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 6 )
+text = "Thanks for playing !"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sep3" type="Control" parent="GameOver/VBoxContainer"]
+margin_top = 312.0
+margin_right = 543.0
+margin_bottom = 342.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="RestartButton" type="Button" parent="GameOver/VBoxContainer"]
+pause_mode = 2
+margin_left = 171.0
+margin_top = 346.0
+margin_right = 371.0
+margin_bottom = 416.0
+rect_min_size = Vector2( 200, 70 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 7 )
+text = "Restart"
+
+[node name="Sep4" type="Control" parent="GameOver/VBoxContainer"]
+margin_top = 420.0
+margin_right = 543.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="QuitButton" type="Button" parent="GameOver/VBoxContainer"]
+pause_mode = 2
+margin_left = 206.0
+margin_top = 454.0
+margin_right = 336.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 130, 70 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 8 )
+text = "Quit"
+[connection signal="pressed" from="GameOver/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

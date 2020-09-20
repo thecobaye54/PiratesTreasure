@@ -1,0 +1,340 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/Ship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/Mini_Island.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/GameUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/PNJGenerator.gd" type="Script" id=5]
+[ext_resource path="res://prefabs/ShipEnemy.tscn" type="PackedScene" id=6]
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+player_ship_prefab = ExtResource( 2 )
+GameUI_path = NodePath("GUILayer/GameUI")
+
+[node name="PNJGenerator" type="Node" parent="."]
+script = ExtResource( 5 )
+EnemyShipPrefab = ExtResource( 6 )
+Player_path = NodePath("../Ship")
+
+[node name="SpawnTimer" type="Timer" parent="PNJGenerator"]
+one_shot = true
+
+[node name="WindTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BGLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="BGLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.0509804, 0.584314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PoolVector2Array( -1200, 850, -1200, -900, 1200, -900, 1200, 850 )
+
+[node name="Island" parent="." instance=ExtResource( 3 )]
+position = Vector2( 107.602, -50.4973 )
+
+[node name="Island2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -174.835, 57.126 )
+
+[node name="Island3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -208.727, -154.553 )
+
+[node name="Island4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -396.622, 22.0443 )
+
+[node name="Island5" parent="." instance=ExtResource( 3 )]
+position = Vector2( -762.803, 156.395 )
+
+[node name="Island6" parent="." instance=ExtResource( 3 )]
+position = Vector2( -712.951, -82.0113 )
+
+[node name="Island95" parent="." instance=ExtResource( 3 )]
+position = Vector2( -588.5, 24.0547 )
+
+[node name="Island7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 501.379, 213.801 )
+
+[node name="Island8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 140.828, 157.635 )
+
+[node name="Island9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 277.12, -42.6451 )
+
+[node name="Island10" parent="." instance=ExtResource( 3 )]
+position = Vector2( -2.84424, 286.343 )
+
+[node name="Island11" parent="." instance=ExtResource( 3 )]
+position = Vector2( -285.281, 393.966 )
+
+[node name="Island12" parent="." instance=ExtResource( 3 )]
+position = Vector2( -319.173, 182.287 )
+
+[node name="Island92" parent="." instance=ExtResource( 3 )]
+position = Vector2( -509.787, 361.893 )
+
+[node name="Island93" parent="." instance=ExtResource( 3 )]
+position = Vector2( -595.352, 226.832 )
+
+[node name="Island13" parent="." instance=ExtResource( 3 )]
+position = Vector2( -13.8687, -292.103 )
+
+[node name="Island14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 597.609, -250.934 )
+
+[node name="Island15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 568.08, -3.53546 )
+
+[node name="Island16" parent="." instance=ExtResource( 3 )]
+position = Vector2( -219.088, 570.663 )
+
+[node name="Island17" parent="." instance=ExtResource( 3 )]
+position = Vector2( -581.615, 524.78 )
+
+[node name="Island18" parent="." instance=ExtResource( 3 )]
+position = Vector2( -774.354, 366.048 )
+
+[node name="Island94" parent="." instance=ExtResource( 3 )]
+position = Vector2( -769.008, 512.155 )
+
+[node name="Island19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 448.763, -826.625 )
+
+[node name="Island20" parent="." instance=ExtResource( 3 )]
+position = Vector2( -4.26801, -573.142 )
+
+[node name="Island21" parent="." instance=ExtResource( 3 )]
+position = Vector2( -38.1605, -784.821 )
+
+[node name="Island22" parent="." instance=ExtResource( 3 )]
+position = Vector2( -226.055, -608.224 )
+
+[node name="Island23" parent="." instance=ExtResource( 3 )]
+position = Vector2( -319.918, -700.399 )
+
+[node name="Island24" parent="." instance=ExtResource( 3 )]
+position = Vector2( -431.723, -774.233 )
+
+[node name="Island25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 860.52, -616.265 )
+
+[node name="Island26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 578.083, -508.642 )
+
+[node name="Island27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 544.191, -720.321 )
+
+[node name="Island28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 356.296, -543.724 )
+
+[node name="Island29" parent="." instance=ExtResource( 3 )]
+position = Vector2( 73.8596, -436.101 )
+
+[node name="Island30" parent="." instance=ExtResource( 3 )]
+position = Vector2( -148.606, -447.981 )
+
+[node name="Island62" parent="." instance=ExtResource( 3 )]
+position = Vector2( 321.246, -748.246 )
+
+[node name="Island63" parent="." instance=ExtResource( 3 )]
+position = Vector2( 152.506, 784.104 )
+
+[node name="Island64" parent="." instance=ExtResource( 3 )]
+position = Vector2( 99.4589, -783.328 )
+
+[node name="Island66" parent="." instance=ExtResource( 3 )]
+position = Vector2( -235.866, 817.778 )
+
+[node name="Island67" parent="." instance=ExtResource( 3 )]
+position = Vector2( -98.2467, 819.271 )
+
+[node name="Island65" parent="." instance=ExtResource( 3 )]
+position = Vector2( 176.907, -623.085 )
+
+[node name="Island31" parent="." instance=ExtResource( 3 )]
+position = Vector2( 393.218, 762.701 )
+
+[node name="Island32" parent="." instance=ExtResource( 3 )]
+position = Vector2( 572.307, 760.703 )
+
+[node name="Island33" parent="." instance=ExtResource( 3 )]
+position = Vector2( 743.082, -840.606 )
+
+[node name="Island90" parent="." instance=ExtResource( 3 )]
+position = Vector2( 766.13, 770.373 )
+
+[node name="Island91" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1088.3, -858.245 )
+
+[node name="Island88" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1109.98, -706.98 )
+
+[node name="Island89" parent="." instance=ExtResource( 3 )]
+position = Vector2( 952.229, -780.13 )
+
+[node name="Island45" parent="." instance=ExtResource( 3 )]
+position = Vector2( 723.901, -51.9404 )
+
+[node name="Island84" parent="." instance=ExtResource( 3 )]
+position = Vector2( 910.369, -238.409 )
+
+[node name="Island85" parent="." instance=ExtResource( 3 )]
+position = Vector2( 781.557, -394.565 )
+
+[node name="Island86" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1094.32, -382.04 )
+
+[node name="Island46" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1117.68, 212.358 )
+
+[node name="Island47" parent="." instance=ExtResource( 3 )]
+position = Vector2( 835.242, 319.981 )
+
+[node name="Island83" parent="." instance=ExtResource( 3 )]
+position = Vector2( 958.715, 168.791 )
+
+[node name="Island81" parent="." instance=ExtResource( 3 )]
+position = Vector2( 938.556, 531.648 )
+
+[node name="Island96" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1043.44, 780.367 )
+
+[node name="Island48" parent="." instance=ExtResource( 3 )]
+position = Vector2( 801.35, 108.302 )
+
+[node name="Island76" parent="." instance=ExtResource( 3 )]
+position = Vector2( 996.727, 371.108 )
+
+[node name="Island82" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1152.96, 497.1 )
+
+[node name="Island77" parent="." instance=ExtResource( 3 )]
+position = Vector2( 714.29, 478.731 )
+
+[node name="Island78" parent="." instance=ExtResource( 3 )]
+position = Vector2( 680.398, 267.052 )
+
+[node name="Island49" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000.24, -14.5029 )
+
+[node name="Island72" parent="." instance=ExtResource( 3 )]
+position = Vector2( 409.603, 391.267 )
+
+[node name="Island80" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512.917, 534.898 )
+
+[node name="Island73" parent="." instance=ExtResource( 3 )]
+position = Vector2( 210.321, 375.418 )
+
+[node name="Island79" parent="." instance=ExtResource( 3 )]
+position = Vector2( 273.317, 551.807 )
+
+[node name="Island74" parent="." instance=ExtResource( 3 )]
+position = Vector2( 45.3972, 458.56 )
+
+[node name="Island75" parent="." instance=ExtResource( 3 )]
+position = Vector2( 327.443, 161.886 )
+
+[node name="Island34" parent="." instance=ExtResource( 3 )]
+position = Vector2( 371.813, -268.927 )
+
+[node name="Island87" parent="." instance=ExtResource( 3 )]
+position = Vector2( 185.344, -256.328 )
+
+[node name="Island35" parent="." instance=ExtResource( 3 )]
+position = Vector2( -222.475, -305.286 )
+
+[node name="Island36" parent="." instance=ExtResource( 3 )]
+position = Vector2( -415.213, -462.237 )
+
+[node name="Island37" parent="." instance=ExtResource( 3 )]
+position = Vector2( -645.061, -299.55 )
+
+[node name="Island38" parent="." instance=ExtResource( 3 )]
+position = Vector2( -596.409, -587.424 )
+
+[node name="Island39" parent="." instance=ExtResource( 3 )]
+position = Vector2( -784.304, -410.827 )
+
+[node name="Island40" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1066.74, -303.204 )
+
+[node name="Island41" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1100.63, -514.883 )
+
+[node name="Island42" parent="." instance=ExtResource( 3 )]
+position = Vector2( -484.619, -168.039 )
+
+[node name="Island50" parent="." instance=ExtResource( 3 )]
+position = Vector2( -934.018, 24.3843 )
+
+[node name="Island51" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1094.83, 122.108 )
+
+[node name="Island52" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1128.73, -89.5708 )
+
+[node name="Island53" parent="." instance=ExtResource( 3 )]
+position = Vector2( -997.389, 517.221 )
+
+[node name="Island54" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1011.22, 297.274 )
+
+[node name="Island55" parent="." instance=ExtResource( 3 )]
+position = Vector2( -900.393, -175.599 )
+
+[node name="Island43" parent="." instance=ExtResource( 3 )]
+position = Vector2( -610.156, -738.158 )
+
+[node name="Island44" parent="." instance=ExtResource( 3 )]
+position = Vector2( -697.535, 790.554 )
+
+[node name="Island68" parent="." instance=ExtResource( 3 )]
+position = Vector2( -418.263, 629.848 )
+
+[node name="Island69" parent="." instance=ExtResource( 3 )]
+position = Vector2( -399.207, 795.471 )
+
+[node name="Island70" parent="." instance=ExtResource( 3 )]
+position = Vector2( -75.7974, 671.107 )
+
+[node name="Island71" parent="." instance=ExtResource( 3 )]
+position = Vector2( -842.896, 639.392 )
+
+[node name="Island56" parent="." instance=ExtResource( 3 )]
+position = Vector2( -762.168, -823.87 )
+
+[node name="Island57" parent="." instance=ExtResource( 3 )]
+position = Vector2( -906.214, 755.625 )
+
+[node name="Island58" parent="." instance=ExtResource( 3 )]
+position = Vector2( -832.769, -538.564 )
+
+[node name="Island59" parent="." instance=ExtResource( 3 )]
+position = Vector2( -906.209, -699.67 )
+
+[node name="Island60" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1027.71, -814.485 )
+
+[node name="Island61" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1117.34, 754.635 )
+
+[node name="Ship" parent="." instance=ExtResource( 2 )]
+WorldPath = NodePath("..")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="GameUI" parent="GUILayer" instance=ExtResource( 4 )]
+visible = false
+[connection signal="timeout" from="PNJGenerator/SpawnTimer" to="PNJGenerator" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="WindTimer" to="." method="_on_WindTimer_timeout"]

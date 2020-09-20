@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/GameHint.gd" type="Script" id=1]
+[ext_resource path="res://images/GameHint.png" type="Texture" id=2]
+[ext_resource path="res://fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://images/GameHint-Contour.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="GameHint" type="Control"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 165, 50 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 0.0662155
+margin_top = -0.0662174
+margin_right = 44.0662
+margin_bottom = 39.9338
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+tint_progress = Color( 0, 0.635294, 0.054902, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/TextureProgress"]
+anchor_top = -0.0025
+anchor_bottom = -0.0025
+margin_left = 19.3891
+margin_top = 11.4977
+margin_right = 79.3892
+margin_bottom = 94.4977
+rect_min_size = Vector2( 60, 60 )
+custom_fonts/font = SubResource( 1 )
+text = "E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 115.0
+margin_top = 14.0
+margin_right = 320.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 60, 30 )
+custom_fonts/font = SubResource( 2 )
+text = "Interact"
